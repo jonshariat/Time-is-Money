@@ -1,0 +1,40 @@
+{
+  "name": "Time is Money",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Time is Money converts dollar amounts into the time it would take you to earn that much money.",
+  "homepage_url": "http://www.uitogether.com",
+  "icons": {
+    "16": "icons/icon16.png",
+    
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png",
+    "permissions": [
+          "storage"
+        ]
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+      "src/bg/background.js"
+    ],
+    "persistent": true
+  },
+  "options_page": "src/options/index.html",
+  "browser_action": {
+    "default_icon": "icons/icon19.png",
+    "default_title": "Time is Money",
+    "default_popup": "src/browser_action/browser_action.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
