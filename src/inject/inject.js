@@ -1,5 +1,5 @@
 
-console.log("Inject Started");
+console.log("In-ject Started -v 0001");
 
 //Takes a price and converts it into time using their salary
 var priceToTime = function(price,dph){
@@ -13,7 +13,7 @@ var priceToTime = function(price,dph){
 	if (hoursToBuy >= 8765.81){
 		var years = Math.floor(hoursToBuy/8765.81);
 		hoursToBuy = hoursToBuy - (years * 8765.81);
-		totalTime.years = years+" years";
+		totalTime.years = years+" years"; //Add if totaltime is more than 2 -> years, if less -> Year etc.
 	}
 	
 	//Months
@@ -66,15 +66,15 @@ function printResult(totalObj) {
 var pageText = document.body.innerHTML;
 
 document.body.innerHTML = pageText.replace(/\$[0-9]*,?.?\d{1,2}(\.\d{1,2})?/g,
-
 function (string) {
     var number = string.replace('$','');
     number = number.replace(',','');
-    console.log(number);
-    var timeReplace = printResult(priceToTime(number, 12));
-    console.log(timeReplace);
+    //console.log(number);
+    var timeReplace = printResult(priceToTime(number, 12));//dph needs to be set in settings
+    //console.log(timeReplace);
     return timeReplace;
     
 });
+
 
 
