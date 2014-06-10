@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-	<link rel='stylesheet' href='../../css/settings.css' />
-	<script src="../../js/jquery/jquery.min.js"></script>
-	<script src='../bg/background.js'></script>
-
-	<title>These are the options!</title>
-</head>
+<head><title>My Test Extension Options</title></head>
 <body>
-<div class="form">
-	<h3>How much do you make hourly?</h3>
-	<form onsubmit="saveChanges()">
-		$<input type="number" name="dph"></form>
-		
-		<input type="submit" value="Submit">
-		
-	</form>
+
+Favorite color:
+<select id="color">
+ <option value="red">red</option>
+ <option value="green">green</option>
+ <option value="blue">blue</option>
+ <option value="yellow">yellow</option>
+</select>
+
+<label>
+  <input type="checkbox" id="like">
+  I like colors.
+</label>
+
+$<input type="number" id="dph">
+
+<div id="status"></div>
+<button id="save">Save</button>
+
+<script src="options.js"></script>
 </body>
 </html>
