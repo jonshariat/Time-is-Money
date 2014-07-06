@@ -19,9 +19,15 @@ It's my first plugin!
 
 To Do:
 1. Pretty up the options page
+
 2. Investigate js bug on some pages
+
 3. Make time appear next to prices, instead of replacing them
+
 4. Make a landing page
+
 LAUNCH V1
+
 1. On/Off
+
 2. Referral Links $$
