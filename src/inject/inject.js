@@ -1,5 +1,5 @@
 
-console.log("In-ject Started -v 0001");
+console.log("In-ject Started -v 0003");
 
 //Takes a price and converts it into time using their salary
 var priceToTime = function(price,dph){
@@ -50,7 +50,7 @@ var priceToTime = function(price,dph){
 	
 	return totalTime;
 	
-}
+};
 
 function printResult(totalObj) {
 		  var result = "";
@@ -60,21 +60,38 @@ function printResult(totalObj) {
 			    }
 			  }
 		  return result;
-		}
+		};
 
 
-var pageText = document.body.innerHTML;
+function changePrices(userDph){
+	var pageText = document.body.innerHTML;
+	console.log("changePrices Fired");
+	document.body.innerHTML = pageText.replace(/\$[0-9]*,?.?\d{1,2}(\.\d{1,2})?/g,
+		function (string) {
+		    var number = string.replace('$','');
+		    number = number.replace(',','');
+		    var timeReplace = printResult(priceToTime(number, userDph));//dph needs to be set in settings
+		    return timeReplace;
+	});
+};//end of changePrices
 
-document.body.innerHTML = pageText.replace(/\$[0-9]*,?.?\d{1,2}(\.\d{1,2})?/g,
-function (string) {
-    var number = string.replace('$','');
-    number = number.replace(',','');
-    //console.log(number);
-    var timeReplace = printResult(priceToTime(number, 12));//dph needs to be set in settings
-    //console.log(timeReplace);
-    return timeReplace;
-    
-});
+var userDph;
+
+chrome.storage.sync.get({
+		dph: '1'
+		}, function(items) {
+		userDph = items.dph;
+		console.log(items.dph+" retreived");
+		
+		changePrices(userDph);
+		
+});//end sync
+
+
+
+	
+
+
 
 
 
