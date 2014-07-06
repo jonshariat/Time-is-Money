@@ -18,6 +18,7 @@ It has a RegEx to dedect price patterns.
 It's my first plugin!
 
 To Do:
+
 1. Pretty up the options page
 
 2. Investigate js bug on some pages
