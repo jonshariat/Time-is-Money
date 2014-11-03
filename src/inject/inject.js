@@ -1,4 +1,3 @@
-
 console.log("In-ject Started -v 0003");
 
 //Takes a price and converts it into time using their salary
@@ -14,21 +13,21 @@ var priceToTime = function(price,dph){
 		var years = Math.floor(hoursToBuy/8765.81);
 		hoursToBuy = hoursToBuy - (years * 8765.81);
 		totalTime.years = years+" years"; //Add if totaltime is more than 2 -> years, if less -> Year etc.
-	}
+	};
 	
 	//Months
 	if (hoursToBuy >= 730.484){
 		var months = Math.floor(hoursToBuy/730.484);
 		hoursToBuy = hoursToBuy - (months * 730.484);
 		totalTime.months = months+" months";
-	}
+	};
 	
 	//Weeks
 	if (hoursToBuy >= 168){
 		var weeks = Math.floor(hoursToBuy/168);
 		hoursToBuy = hoursToBuy - (weeks * 168);
 		totalTime.weeks = weeks+" weeks";
-	}
+	};
 	
 	//Days
 	if (hoursToBuy >= 24){
@@ -65,13 +64,13 @@ function printResult(totalObj) {
 
 function changePrices(userDph){
 	var pageText = document.body.innerHTML;
-	console.log("changePrices Fired");
-	document.body.innerHTML = pageText.replace(/\$[0-9]*,?.?\d{1,2}(\.\d{1,2})?/g,
+	document.body.innerHTML = pageText.replace(/(\$(\d{1,3},)*(\d{1,3}))(?:\.[0-9]{2})?(?!\.|\\|\"|\-|\)|,|_|')/g,
 		function (string) {
-		    var number = string.replace('$','');
-		    number = number.replace(',','');
-		    var timeReplace = printResult(priceToTime(number, userDph));//dph needs to be set in settings
-		    return timeReplace;
+			    var number = string.replace('$','');
+			    number = number.replace(',','');
+			    var timeReplace = printResult(priceToTime(number, userDph));//dph needs to be set in settings
+			    console.log(timeReplace+" <-timeReplaced");
+			    return timeReplace;
 	});
 };//end of changePrices
 
