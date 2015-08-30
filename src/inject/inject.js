@@ -1,5 +1,6 @@
 console.log("In-ject Started -v 0003");
 
+
 //Takes a price and converts it into time using their salary
 var priceToTime = function(price,dph){
 	var hoursToBuy = price/dph;
@@ -51,6 +52,7 @@ var priceToTime = function(price,dph){
 	
 };
 
+/*
 function printResult(totalObj) {
 		  var result = "";
 			  for (var i in totalObj) {
@@ -60,9 +62,32 @@ function printResult(totalObj) {
 			  }
 		  return result;
 		};
+*/
 
 
 function changePrices(userDph){
+
+var regexp = /(\$(\d{1,3},)*(\d{1,3}))(?:\.[0-9]{2})?(?!\.|\\|\"|\-|\)|,|_|')/i;
+var $ = jQuery;
+ 
+// Find all `span` & `td`
+$('span,td').filter(function(){
+  // Filter element's text matches our regexp
+  return regexp.test($(this).text())
+}).each( function( i, element ) { // Iterate through each filtered element
+      var $element = $(element);
+      var content = $element.text();
+      // get changed text & wrap with new span(just in case we want to change style of changed text)
+      content = content.replace(regexp, function(i, text){
+           return '<span class="search-found">' + "NEW" + text + '</span>'
+      });
+      // finally replace new text for that element
+      $element.html( content );
+ });
+};
+
+
+/*
 	var pageText = document.body.innerHTML;
 	document.body.innerHTML = pageText.replace(/(\$(\d{1,3},)*(\d{1,3}))(?:\.[0-9]{2})?(?!\.|\\|\"|\-|\)|,|_|')/g,
 		function (string) {
@@ -73,6 +98,7 @@ function changePrices(userDph){
 			    return timeReplace;
 	});
 };//end of changePrices
+*/
 
 var userDph;
 
