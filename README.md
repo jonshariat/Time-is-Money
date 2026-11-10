@@ -6,7 +6,7 @@ How much is your time worth?
 
 This is a Chrome Plugin that will help you better uderstand the value of your money. It takes how much you make an hour and converts prices on the pages you visit into the time it would take you to buy that item.
 
-For example: You make  8mins/hr
+For example: You make  $8/hr
 You want to buy a Phone that costs  9hrs 2mins
 
 It will show as: 11 hours
